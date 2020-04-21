@@ -28,17 +28,22 @@ They have not started the development of a mobile app yet. Contoso is looking fo
 
 To prepare for hosting their applications in the cloud, they would like to migrate their SQL Server database to a PaaS SQL service in Azure. Contoso is hoping to take advantage of the advanced security features available in a fully managed SQL service in the Azure. By migrating to the cloud, they hope to improve their technological capabilities and take advantage of enhancements and services that are enabled by moving to the cloud. The new features they would like to add are automated document forwarding from brokers, secure access for brokers, access to policy information, and reliable policy retrieval for a dispersed workforce. They have been clear that they will continue using the PolicyConnect WinForms application on-premises but want to update the application to use cloud-based APIs and services. Additionally, they want to store policy documents in cloud storage for retrieval via the web and mobile apps.
 
-### Whiteboard design session
+### Part I: Presentation
+Start from presenting .NET Modernization with Azure story using the [included deck.](Presentation) Presentation should take 60-90 minutes and introduce the aspects of .NET app modernization and value that Azure brings.
 
-In this whiteboard design session, you work with a group to design a solution for modernizing legacy on-premises applications and infrastructure by leveraging cloud services. As part of the modernization effort, application enhancements are added using a mix of web and mobile services, all secured using Azure Active Directory.
+### Part II: Whiteboard Design Session
 
-At the end of this whiteboard design session, your ability to design a modernization plan for organizations looking to move services from on-premises to the cloud will be improved.
+During [whiteboard design session](Whiteboard%20design%20session), you work with a group to design a solution for modernizing legacy on-premises applications and infrastructure by leveraging cloud services. As part of the modernization effort, application enhancements are added using a mix of web and mobile services, all secured using Azure Active Directory.
 
-### Hands-on lab
+At the end of this whiteboard design session, you will design a modernization plan for organizations looking to move services from on-premises to the cloud will be improved.
 
-In this hands-on lab, you implement the steps to modernize a legacy on-premises application, including upgrading and migrating the database to Azure and updating the application to take advantage of serverless and cloud services.
+If you are delivering the session remotely, we suggest to use [Microsoft Teams](https://products.office.com/microsoft-teams) and [Microsoft Whiteboard.](https://whiteboard.microsoft.com)
 
-At the end of this hands-on lab, your ability to build solutions for modernizing legacy on-premises applications and infrastructure using cloud services will be improved.
+### Part III: Hands-on Lab
+
+[Hands-on lab](Hands-on%20lab) is designed to guide attendees through the process of implementing the steps to modernize a legacy .NET-based on-premises application, including upgrading and migrating the database to Azure and updating the application to take advantage of serverless and cloud services.
+
+At the end of this hands-on lab, you will build a solution for modernizing legacy on-premises applications and infrastructure using cloud services like Azure App Service and Azure SQL Database.
 
 ## Azure services and related products
 
