@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-
+using Microsoft.Extensions.Logging;
 namespace Contoso.WebApi.Controllers
 {
     [Produces("application/json")]
@@ -11,10 +11,12 @@ namespace Contoso.WebApi.Controllers
     public class PoliciesController : ControllerBase
     {
         private readonly ContosoDbContext _context;
+        private readonly ILogger _logger;
 
-        public PoliciesController(ContosoDbContext context)
+        public PoliciesController(ContosoDbContext context , ILogger<PoliciesController> log)
         {
             _context = context;
+            _logger = log;
         }
 
         [HttpGet]

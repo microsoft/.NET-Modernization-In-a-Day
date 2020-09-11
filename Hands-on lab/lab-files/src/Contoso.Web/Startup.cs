@@ -26,8 +26,12 @@ namespace Contoso.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddHttpClient();
+            services.AddMvc(opt=>
+            {
+                opt.EnableEndpointRouting = false;
+            })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

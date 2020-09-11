@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace Contoso.WebApi
 {
@@ -17,13 +18,17 @@ namespace Contoso.WebApi
                 .ConfigureAppConfiguration((context, config) =>
                 {
                     var buildConfig = config.Build();
-
                     config.AddEnvironmentVariables();
 
-                    // ******************************************
-                    // TODO #1: Insert code into this block to create a connection to Azure Key Vault.
-                    config.// Add the appropriate "Add" statement and insert the requried Key Vault configuration settings
-                    // ******************************************
+                    config.AddAzureKeyVault(KeyVaultConfig.GetKeyVaultEndpoint(buildConfig["KeyVaultName"]),
+                        buildConfig["KeyVaultClientId"],
+                        buildConfig["KeyVaultClientSecret"]);
+
+                })
+                .ConfigureLogging(options => 
+                {
+                    options.ClearProviders();
+                    options.AddConsole();                    
                 })
                 .UseStartup<Startup>();
     }

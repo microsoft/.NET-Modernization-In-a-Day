@@ -44,9 +44,7 @@ namespace Contoso.Web.Controllers
                         new Claim("DisplayName", viewModel.Username),
                         new Claim(ClaimTypes.Role, role)
                     };
-
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
                     var authProperties = new AuthenticationProperties
                     {
                         AllowRefresh = true,
@@ -54,14 +52,11 @@ namespace Contoso.Web.Controllers
                         IsPersistent = viewModel.RememberLogin,
                         IssuedUtc = DateTimeOffset.Now
                     };
-
                     await HttpContext.SignInAsync(
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity),
                         authProperties);
-
-                    _logger.LogInformation($"User {viewModel.Username} logged in at {DateTime.UtcNow}.");
-                    
+                    _logger.LogInformation($"User {viewModel.Username} logged in at {DateTime.UtcNow}.");                    
                     return Redirect(returnUrl);
                 }
                 else
@@ -70,7 +65,6 @@ namespace Contoso.Web.Controllers
                     return View("AccessDenied");
                 }
             }
-
             ModelState.AddModelError("", "Login failed.");
             return View("Login");
         }
@@ -79,9 +73,7 @@ namespace Contoso.Web.Controllers
         public async Task<IActionResult> Logout()
         {
             _logger.LogInformation($"User {User.Identity.Name} logged out at {DateTime.UtcNow}.");
-
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
             return View("SignedOut");
         }
     }

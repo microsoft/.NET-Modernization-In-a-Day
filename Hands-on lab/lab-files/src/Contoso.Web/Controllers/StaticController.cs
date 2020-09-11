@@ -12,10 +12,12 @@ namespace Contoso.Web.Controllers
     public class StaticController : Controller
     {
         private readonly IConfiguration _configuration;
+        private readonly IHttpClientFactory _httpClientfactory;
 
-        public StaticController(IConfiguration configuration)
+        public StaticController(IConfiguration configuration, IHttpClientFactory client)
         {
             _configuration = configuration;
+            _httpClientfactory = client;
         }
         public IActionResult Index()
         {
@@ -71,23 +73,23 @@ namespace Contoso.Web.Controllers
         [HttpGet("download/{policyHolder}/{policyNumber}")]
         public async Task<IActionResult> DownloadPolicyDocument(string policyHolder, string policyNumber)
         {
-            using (var client = new HttpClient())
+
+            try
             {
-                try
-                {
-                    client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _configuration["ApimSubscriptionKey"]);
-                    var policyDocumentsPath = _configuration["PolicyDocumentsPath"];
-                    var url = policyDocumentsPath.Replace("{policyHolder}", policyHolder).Replace("{policyNumber}", policyNumber);
+                var client = _httpClientfactory.CreateClient();
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", _configuration["ApimSubscriptionKey"]);
+                var policyDocumentsPath = _configuration["PolicyDocumentsPath"];
+                var url = policyDocumentsPath.Replace("{policyHolder}", policyHolder).Replace("{policyNumber}", policyNumber);
 
-                    var bytes = await client.GetByteArrayAsync(url);
+                var bytes = await client.GetByteArrayAsync(url);
 
-                    return File(bytes, "application/pdf");
-                }
-                catch(Exception ex)
-                {
-                    return NotFound();
-                }
+                return File(bytes, "application/pdf");
             }
+            catch (Exception ex)
+            {               
+                return NotFound();
+            }
+
         }
     }
 }
