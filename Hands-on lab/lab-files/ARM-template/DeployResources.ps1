@@ -1,8 +1,8 @@
 
-$resourceGroup= "DotNetAppModernization"
-$location = "North Europe"
+$resourceGroup= "dotnet-modernization"
+$location = "West Europe"
 az login
 
-az account set --subscription 1665253c-71bf-46a4-b851-2d53ac6f9766
+az account set --subscription 5d9a229f-3bb4-46fb-9995-4d0625c98a34
 az group create --name $resourceGroup --location $location
-az group deployment  create --resource-group $resourceGroup --name "deploy_new_training" --template-file azure-deploy.json 
+az deployment group create -g $resourceGroup --name "deploy_new_training" --template-file azure-deploy_CI_CD.json 

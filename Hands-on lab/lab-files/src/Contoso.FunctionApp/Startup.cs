@@ -15,10 +15,10 @@ namespace Contoso.FunctionApp
         {
             var serviceProvider = builder?.Services.BuildServiceProvider();
             builder.Services.AddHttpClient();
-            builder.Services.AddLogging();
+            builder.Services.AddLogging();            
             builder.Services.AddApplicationInsightsTelemetry(options =>
             {
-                var instkey = Environment.GetEnvironmentVariable("InstrumentationKey") ?? string.Empty;
+                var instkey = Environment.GetEnvironmentVariable("APPINSIGHTS_INSTRUMENTATIONKEY") ?? string.Empty;
                 if (string.IsNullOrEmpty(instkey))
                 {                    
                     throw new ArgumentNullException("Unable to find a instrumentationkey for Applicaiton Insights ");

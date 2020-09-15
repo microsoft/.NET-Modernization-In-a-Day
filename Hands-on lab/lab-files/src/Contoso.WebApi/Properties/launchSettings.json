@@ -19,7 +19,11 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "KeyVaultName": "contoso-kv-mpqiztwvluois",
+        "KeyVaultClientId": "1e297663-b999-4ca3-b346-029a6690e7d6",
+        "KeyVaultClientSecret": "Ro9YEWjhyl7UhMg9l46jR_Hz.5B_4atu_M",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "APPINSIGHTS_INSTRUMENTATIONKEY": "4d4348d4-6f2e-4dce-a07c-a6f803c06de2"
       },
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
     }

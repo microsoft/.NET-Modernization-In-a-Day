@@ -42,7 +42,7 @@ namespace Contoso.WebApi
             services.AddSwaggerGenNewtonsoftSupport();
             services.AddApplicationInsightsTelemetry(opts => 
             {                                    
-                opts.InstrumentationKey = Configuration["InstrumentationKey"];                
+                opts.InstrumentationKey = Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"];                
             });
             
             services.AddDbContext<ContosoDbContext>(options => 
