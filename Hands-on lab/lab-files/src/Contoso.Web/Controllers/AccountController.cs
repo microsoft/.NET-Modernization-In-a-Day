@@ -22,7 +22,7 @@ namespace Contoso.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Login()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);            
             return View(new LoginViewModel());
         }
 
@@ -56,12 +56,12 @@ namespace Contoso.Web.Controllers
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity),
                         authProperties);
-                    _logger.LogInformation($"User {viewModel.Username} logged in at {DateTime.UtcNow}.");                    
+                    _logger.LogInformation("User {Username} logged in at {DateTime}.",viewModel.Username, DateTime.UtcNow);                    
                     return Redirect(returnUrl);
                 }
                 else
                 {
-                    _logger.LogInformation($"Access denied for user {viewModel.Username} at {DateTime.UtcNow}.");
+                    _logger.LogInformation("Access denied for user {Username} at {DateTime}.",viewModel.Username , DateTime.UtcNow);
                     return View("AccessDenied");
                 }
             }
@@ -72,7 +72,7 @@ namespace Contoso.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
-            _logger.LogInformation($"User {User.Identity.Name} logged out at {DateTime.UtcNow}.");
+            _logger.LogInformation("User {username} logged out at {DateTime}.", User.Identity.Name,DateTime.UtcNow);
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return View("SignedOut");
         }

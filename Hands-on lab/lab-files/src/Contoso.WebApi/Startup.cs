@@ -40,10 +40,7 @@ namespace Contoso.WebApi
                 options.EnableEndpointRouting = false;
             }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddSwaggerGenNewtonsoftSupport();
-            services.AddApplicationInsightsTelemetry(opts => 
-            {                                    
-                opts.InstrumentationKey = Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"];                
-            });
+            services.AddApplicationInsightsTelemetry();
             
             services.AddDbContext<ContosoDbContext>(options => 
             {

@@ -27,7 +27,7 @@ namespace Contoso.FunctionApp
         // ******************************************
         {
         
-            logger.LogTrace($"PolicyDocs Function recieved a request for document '{policyholder}-{policynumber}.pdf'.");
+            logger.LogTrace("PolicyDocs Function recieved a request for document '{policyholder}-{policynumber}.pdf'." ,policyholder,policynumber);
             var fileBytes = await GetDocumentFromStorage(policyholder, policynumber);
             return fileBytes.Length > 0
                 ? (ActionResult)new FileContentResult(fileBytes, "application/pdf")
@@ -46,7 +46,7 @@ namespace Contoso.FunctionApp
             using (var request = new HttpRequestMessage())
                {
                   request.Method = HttpMethod.Get;
-                logger.LogTrace($"starting a request to {uri}");
+                logger.LogTrace("starting a request to {uri}",uri);
                   request.RequestUri = new Uri(uri);
                   var response = await cli.SendAsync(request).ConfigureAwait(false);
                   if (response.IsSuccessStatusCode)

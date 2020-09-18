@@ -38,6 +38,7 @@ namespace Contoso.WebApi.Controllers
 
             if (policyHolder == null)
             {
+                _logger.LogInformation("PolicyHolder with Id {id} not found.", id);
                 return new NotFoundObjectResult($"PolicyHolder with Id {id} not found.");
             }
 

@@ -25,8 +25,7 @@ namespace Contoso.FunctionApp
                 }
                 else
                 {
-                    options.InstrumentationKey = instkey;
-                    Console.WriteLine($"instrumentationkey found ");
+                    options.InstrumentationKey = instkey;                    
                 }
                 
             });

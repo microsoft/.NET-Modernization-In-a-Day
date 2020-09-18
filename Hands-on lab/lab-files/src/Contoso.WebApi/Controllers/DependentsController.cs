@@ -37,6 +37,7 @@ namespace Contoso.WebApi.Controllers
             _logger.LogInformation("this is an info call");
             if (dependent == null)
             {
+
                 return new NotFoundObjectResult($"Dependent with Id {id} not found.");
             }
 

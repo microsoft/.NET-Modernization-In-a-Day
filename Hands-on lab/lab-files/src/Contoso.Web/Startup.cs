@@ -27,6 +27,7 @@ namespace Contoso.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddHttpClient();
+            
             services.AddMvc(opt=>
             {
                 opt.EnableEndpointRouting = false;
@@ -35,6 +36,7 @@ namespace Contoso.Web
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddApplicationInsightsTelemetry();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
