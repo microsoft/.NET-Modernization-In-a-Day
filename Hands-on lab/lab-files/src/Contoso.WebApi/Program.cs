@@ -23,6 +23,7 @@ namespace Contoso.WebApi
                 var buildConfig = config.Build();
                 config.AddEnvironmentVariables();
                 instrumentationkey = buildConfig["APPINSIGHTS_INSTRUMENTATIONKEY"];
+                //challange implement keyvault using the callback functions to skp using clientid and clientsecret.
                 config.AddAzureKeyVault(KeyVaultConfig.GetKeyVaultEndpoint(buildConfig["KeyVaultName"]),
                     buildConfig["KeyVaultClientId"],
                     buildConfig["KeyVaultClientSecret"]);

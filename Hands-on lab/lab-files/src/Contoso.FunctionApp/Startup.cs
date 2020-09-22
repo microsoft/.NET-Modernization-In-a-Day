@@ -4,7 +4,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 using System;
 using System.Net.Http;
-
+/*
+ * this class is used to introduce DI in serverless functions
+ * the challange here is to make your own implementaion of keyvault
+ */
 [assembly: FunctionsStartup(typeof(Contoso.FunctionApp.Startup))]
 namespace Contoso.FunctionApp
 {

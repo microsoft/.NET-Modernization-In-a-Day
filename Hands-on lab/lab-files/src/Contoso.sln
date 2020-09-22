@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2BB06D8C-FC39-432F-AD6C-FE7156237A9A}"
 	ProjectSection(SolutionItems) = preProject
 		..\ARM-template\azure-deploy_CI_CD.json = ..\ARM-template\azure-deploy_CI_CD.json
+		..\ARM-template\DeployResources.ps1 = ..\ARM-template\DeployResources.ps1
 	EndProjectSection
 EndProject
 Global

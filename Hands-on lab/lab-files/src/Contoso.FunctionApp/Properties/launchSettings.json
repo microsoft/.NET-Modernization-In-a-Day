@@ -3,9 +3,9 @@
     "Contoso.FunctionApp": {
       "commandName": "Project",
       "environmentVariables": {
-        "containerUri": "https://contosompqiztwvluois.blob.core.windows.net/policies",
-        "sasToken": "?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2021-09-15T20:36:59Z&st=2020-09-03T12:36:59Z&spr=https&sig=tUEvb%2FF75EMMCA%2Fls8GViehexaAx1spSN23DY%2FsJwJk%3D",
-        "APPINSIGHTS_INSTRUMENTATIONKEY": "4d4348d4-6f2e-4dce-a07c-a6f803c06de2"
+        "containerUri": "https://{account}.blob.core.windows.net/policies", //add the name of your storage account
+        "sasToken": "create and add your SAS token for developing localy this should be done with keyvault when done propperly",
+        "APPINSIGHTS_INSTRUMENTATIONKEY": "add your instrumenationkey from the applicaiton insights. this should be taken from keyvault when done propperly"
       }
     }
   }

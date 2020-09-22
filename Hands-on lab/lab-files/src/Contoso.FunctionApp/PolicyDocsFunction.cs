@@ -38,6 +38,7 @@ namespace Contoso.FunctionApp
         {
             // ******************************************
             // TODO #4: Insert code in this block to enable the Function App to retrieve configuration values from Appplication Settings.
+            //TODO add keyvault support
             var containerUri = Environment.GetEnvironmentVariable("containerUri");
             var sasToken = Environment.GetEnvironmentVariable("sasToken");
             // ******************************************

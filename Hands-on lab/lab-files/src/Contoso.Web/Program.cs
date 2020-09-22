@@ -27,6 +27,7 @@ namespace Contoso.Web
                     instrumentationKey = buildConfig["APPINSIGHTS_INSTRUMENTATIONKEY"];
                     if (string.IsNullOrEmpty(buildConfig["KeyVaultName"]) || string.IsNullOrEmpty(buildConfig["KeyVaultClientId"]) || string.IsNullOrEmpty(buildConfig["KeyVaultClientSecret"]))
                         throw new ConfigurationErrorsException("one or all of the configuration settings for Azure key vault are missing");
+                    //challange rewrite the implementation of the keyvault to use the callback funciton instead of using the client id and secret.
                     config.AddAzureKeyVault(KeyVaultConfig.GetKeyVaultEndpoint(buildConfig["KeyVaultName"]), buildConfig["KeyVaultClientId"], buildConfig["KeyVaultClientSecret"]);
                 })
                 .ConfigureLogging(opt =>
