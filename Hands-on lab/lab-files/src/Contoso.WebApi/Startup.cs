@@ -5,7 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Contoso.WebApi
 {
@@ -31,26 +34,31 @@ namespace Contoso.WebApi
                         .AllowAnyMethod()
                         .AllowAnyHeader();
                 });
+            });            
+            services.AddMvc(options=> 
+            {
+                options.EnableEndpointRouting = false;
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddSwaggerGenNewtonsoftSupport();
+            services.AddApplicationInsightsTelemetry();
+            
+            services.AddDbContext<ContosoDbContext>(options => 
+            {
+                options.UseSqlServer(Configuration["ConnectionString"]);
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            // ******************************************
-            // TODO #2: Update the code in this block to set the database connection from a Key Vault secret
-            services.AddDbContext<ContosoDbContext>(// Add the options to retrieve the database connection string from key vault)
-            // ******************************************
-
-            // Register the Swagger generator
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PolicyConnect API", Version = "v1" });
             });
+            services.AddApplicationInsightsTelemetry();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.EnvironmentName == "Development")
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -65,7 +73,7 @@ namespace Contoso.WebApi
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
-
+            
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Contoso.FunctionApp": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "containerUri": "https://{account}.blob.core.windows.net/policies", //add the name of your storage account
+        "sasToken": "create and add your SAS token for developing localy this should be done with keyvault when done propperly",
+        "APPINSIGHTS_INSTRUMENTATIONKEY": "add your instrumenationkey from the applicaiton insights. this should be taken from keyvault when done propperly"
+      }
+    }
+  }
+}

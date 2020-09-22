@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-
+using Microsoft.Extensions.Logging;
 namespace Contoso.WebApi.Controllers
 {
     [Produces("application/json")]
@@ -11,10 +11,12 @@ namespace Contoso.WebApi.Controllers
     public class PolicyHoldersController : ControllerBase
     {
         private readonly ContosoDbContext _context;
+        private readonly ILogger _logger;
 
-        public PolicyHoldersController(ContosoDbContext context)
+        public PolicyHoldersController(ContosoDbContext context , ILogger<PolicyHoldersController> log)
         {
             _context = context;
+            _logger = log;
         }
 
         [HttpGet]
@@ -36,6 +38,7 @@ namespace Contoso.WebApi.Controllers
 
             if (policyHolder == null)
             {
+                _logger.LogInformation("PolicyHolder with Id {id} not found.", id);
                 return new NotFoundObjectResult($"PolicyHolder with Id {id} not found.");
             }
 
