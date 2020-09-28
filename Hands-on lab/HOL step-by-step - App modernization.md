@@ -1108,7 +1108,6 @@ In this task, you prepare your Web App to work with the API App by adding the UR
 6. Next replace the tokenized values in the following command as specified below, and then run it from the Azure Cloud Shell command prompt.
 
     - `<your-web-app-name>`: Replace with your Function App name, which you copied in the previous step.
-    - `<your-storage-account-sas-token>`: Replace with the `policies` container URL you copied into a text editor previously.
 
     ```powershell
     $webAppName = "<your-web-app-name>"
