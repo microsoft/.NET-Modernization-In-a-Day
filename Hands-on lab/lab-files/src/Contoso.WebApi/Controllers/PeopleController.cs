@@ -3,7 +3,7 @@ using Contoso.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-
+using Microsoft.Extensions.Logging;
 namespace Contoso.WebApi.Controllers
 {
     [Produces("application/json")]
@@ -12,10 +12,12 @@ namespace Contoso.WebApi.Controllers
     public class PeopleController : ControllerBase
     {
         private readonly ContosoDbContext _context;
+        private readonly ILogger _logger;
 
-        public PeopleController(ContosoDbContext context)
+        public PeopleController(ContosoDbContext context , ILogger<PeopleController> log)
         {
             _context = context;
+            _logger = log;
         }
 
         [HttpGet]
